@@ -41,11 +41,11 @@ class Book
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['book:all', 'book:one'])]
+    #[Groups(['book:one'])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Groups(['book:all', 'book:one'])]
+    #[Groups(['book:one'])]
     private ?\DateTimeInterface $publicationDate = null;
 
     #[ORM\Column(length: 50)]
