@@ -96,4 +96,9 @@ class Review
 
         return $this;
     }
+    #[ORM\PrePersist]
+    public function setCreationDateValue()
+    {
+        $this->creationDate = new \DateTime();
+    }
 }

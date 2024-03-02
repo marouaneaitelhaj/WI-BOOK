@@ -2,30 +2,57 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Get;
 use App\Repository\BookRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: ['groups' => ['book:read']]
+        ),
+        new Get(
+            normalizationContext: ['groups' => ['book:read']]
+        )
+    ]
+)]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: ['title' => 'ipartial', 'author.id' => 'exact', 'genre' => 'ipartial']
+)]
 class Book
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['book:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['book:read'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['book:read'])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['book:read'])]
     private ?\DateTimeInterface $publicationDate = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['book:read'])]
     private ?string $genre = null;
 
+    #[ORM\ManyToOne(targetEntity: Author::class, inversedBy: 'books')]
+    #[Groups(['book:read'])]
     private ?Author $author = null;
 
     public function getAuthor(): ?Author
@@ -91,5 +118,10 @@ class Book
         $this->genre = $genre;
 
         return $this;
+    }
+    #[ORM\PrePersist]
+    public function setPublicationDateValue()
+    {
+        $this->publicationDate = new \DateTime();
     }
 }
