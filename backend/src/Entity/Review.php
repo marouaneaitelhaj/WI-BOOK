@@ -6,6 +6,7 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ReviewRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 #[ApiResource]
@@ -14,18 +15,23 @@ class Review
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['book:one'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['book:one'])]
     private ?string $fullName = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['book:one'])]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['book:one'])]
     private ?string $comment = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['book:one'])]
     private ?\DateTimeInterface $creationDate = null;
 
     #[ORM\ManyToOne]

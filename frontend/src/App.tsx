@@ -1,6 +1,6 @@
 import Book from "./pages/Book";
 import Books from "./pages/Books";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 
 export default function App() {
   return (
@@ -11,10 +11,14 @@ export default function App() {
           {/* <Navbar /> */}
           <Routes>
             <Route index element={<Books />} />
-            <Route path="/1" element={<Book />} />
+            <Route path="/:bookId" element={<BookWraper />} />
           </Routes>
         </div>
       </BrowserRouter >
     </>
   )
+}
+function BookWraper() {
+  const { bookId } = useParams();
+  return <Book bookId={bookId} ></Book>
 }

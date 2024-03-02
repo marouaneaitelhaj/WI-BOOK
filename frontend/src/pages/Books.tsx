@@ -7,7 +7,7 @@ export default function Books() {
     const [books, setBooks] = useState<TBook[]>([])
     useEffect(() => {
             axios.get("/books").then((response) => {
-                console.log(response.data)
+                setBooks(response.data['hydra:member'])
             })
     }, [])
     return (
@@ -16,21 +16,6 @@ export default function Books() {
                 <h2 className="sr-only">books</h2>
 
                 <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
-                    {books.map((book) => (
-                        <BookCard book={book}></BookCard>
-                    ))}
-                    {books.map((book) => (
-                        <BookCard book={book}></BookCard>
-                    ))}
-                    {books.map((book) => (
-                        <BookCard book={book}></BookCard>
-                    ))}
-                    {books.map((book) => (
-                        <BookCard book={book}></BookCard>
-                    ))}
-                    {books.map((book) => (
-                        <BookCard book={book}></BookCard>
-                    ))}
                     {books.map((book) => (
                         <BookCard book={book}></BookCard>
                     ))}

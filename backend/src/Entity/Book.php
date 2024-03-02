@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Get;
 use App\Repository\BookRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -16,10 +17,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     operations: [
         new GetCollection(
-            normalizationContext: ['groups' => ['book:read']]
+            normalizationContext: ['groups' => ['book:all']]
         ),
         new Get(
-            normalizationContext: ['groups' => ['book:read']]
+            normalizationContext: ['groups' => ['book:one']]
         )
     ]
 )]
@@ -32,28 +33,33 @@ class Book
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['book:read'])]
+    #[Groups(['book:all', 'book:one'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['book:read'])]
+    #[Groups(['book:all', 'book:one'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['book:read'])]
+    #[Groups(['book:all', 'book:one'])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Groups(['book:read'])]
+    #[Groups(['book:all', 'book:one'])]
     private ?\DateTimeInterface $publicationDate = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['book:read'])]
+    #[Groups(['book:all', 'book:one'])]
     private ?string $genre = null;
 
     #[ORM\ManyToOne(targetEntity: Author::class, inversedBy: 'books')]
-    #[Groups(['book:read'])]
+    #[Groups(['book:all', 'book:one'])]
     private ?Author $author = null;
+
+    #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'book')]
+    #[Groups(['book:one'])]
+    public Collection $reviews;
+    
 
     public function getAuthor(): ?Author
     {

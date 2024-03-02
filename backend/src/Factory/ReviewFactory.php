@@ -51,6 +51,7 @@ final class ReviewFactory extends ModelFactory
             'creationDate' => self::faker()->dateTime(),
             'email' => self::faker()->text(50),
             'fullName' => self::faker()->text(50),
+            'book' => BookFactory::random()
         ];
     }
 

@@ -15,6 +15,6 @@ class AppFixtures extends Fixture
     {
         AuthorFactory::new()->createMany(300);
         BookFactory::new()->createMany(100);
-        // ReviewFactory::new()->createMany(1000);
+        ReviewFactory::new()->createMany(1000);
     }
 }
