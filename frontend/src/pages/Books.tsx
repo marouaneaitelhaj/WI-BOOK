@@ -1,40 +1,35 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import BookCard from "../components/BookCard"
-import { TBook } from "../types"
-import axios from "axios"
-import Pagination from "../components/Pagination"
 import { useSearchParams } from "react-router-dom"
 import InfiniteScroll from "react-infinite-scroll-component"
+import { useSelector } from "react-redux"
+import { RootState, useAppDispatch } from "@/store/store"
+import { reset, setPage } from "@/store/books/bookSlice"
+import { getBooks } from "@/store/books/bookActions"
 
 export default function Books() {
-    const [books, setBooks] = useState<TBook[]>([])
+    const { books } = useSelector((state: RootState) => state.book)
     const [searchParams, setSearchParams] = useSearchParams({ title: "" });
-    const [page, setPage] = useState(1);
+    const { page } = useSelector((state: RootState) => state.book)
+    const { hasMore } = useSelector((state: RootState) => state.book)
+    const dispatch = useAppDispatch();
+
     useEffect(() => {
-        fetchData()
-    }, [])
-    useEffect(() => {
-        setBooks([])
-        setPage(1)
-        if (searchParams.get('title') !== "") {
-            fetchData()
-        }
+        dispatch(reset())
     }, [searchParams])
 
-    function fetchData() {
-        axios.get("/books?page=" + page + "&title=" + searchParams.get('title')).then((response) => {
-            setBooks(prevBooks => [...prevBooks, ...response.data['hydra:member']]);
-            setPage(prevPage => prevPage + 1);
-        });
-    }
+
+    useEffect(() => {
+        dispatch(getBooks({ page: page, title: searchParams.get('title') || '' }))
+    }, [page, searchParams])
 
     return (
         <InfiniteScroll
             dataLength={books.length}
-            next={fetchData}
-            hasMore={true}
-            loader={<p>Loading...</p>}
-            endMessage={<p>No more data to load.</p>}
+            next={() => dispatch(setPage(page + 1))}
+            hasMore={hasMore}
+            loader={<p className="text-white">Loading...</p>}
+            endMessage={<p className="text-white">No more data to load.</p>}
         >
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
                 <h2 className="sr-only">books</h2>
