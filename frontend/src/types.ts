@@ -1,24 +1,24 @@
-export type Book = {
+export type TBook = {
     id: number;
     title : string;
     description : string;
     publicationDate : string;
     genre : string;
-    author : Author;
+    author : TAuthor;
 }
-export type Author = {
+export type TAuthor = {
     id: number;
     firstName : string;
     lastName : string;
     bibliography : string;
     deathDate : string;
-    books : Book[];
+    books : TBook[];
 }
-export type Review = {
+export type TReview = {
     id: number;
     fullName : string;
     email : number;
     comment : string;
     creationDate : string;
-    book : Book;
+    book : TBook;
 }

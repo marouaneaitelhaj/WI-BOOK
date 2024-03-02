@@ -1,6 +1,6 @@
-import { Book } from "../types";
+import { TBook } from "../types";
 
-export default function BookCard(props: { book: Book }) {
+export default function BookCard(props: { book: TBook }) {
     return (
         <div
             key={props.book.id}
@@ -8,7 +8,7 @@ export default function BookCard(props: { book: Book }) {
         >
             <div className="aspect-w-3 aspect-h-4 bg-gray-200 group-hover:opacity-75 sm:aspect-none sm:h-96">
                 <img
-                    src='https://lh3.googleusercontent.com/-cw2dvp_QpqA/AAAAAAAAAAI/AAAAAAAAAAA/ALKGfknYJDz4qijATxyItY2c24MJmsd_Ag/photo.jpg?sz=46'
+                    src='https://bodleianshop.co.uk/cdn/shop/products/SpeakingVolumes.jpg?v=1646308052'
                     className="h-full w-full object-cover object-center sm:h-full sm:w-full"
                 />
             </div>
