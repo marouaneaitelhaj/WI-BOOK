@@ -49,7 +49,7 @@ final class ReviewFactory extends ModelFactory
         return [
             'comment' => self::faker()->text(),
             'creationDate' => self::faker()->dateTime(),
-            'email' => self::faker()->text(50),
+            'email' => self::faker()->email(),
             'fullName' => self::faker()->text(50),
             'book' => BookFactory::random()
         ];

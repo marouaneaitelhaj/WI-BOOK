@@ -5,6 +5,7 @@ export type TBook = {
     publicationDate : string;
     genre : string;
     author : TAuthor;
+    reviews : TReview[];
 }
 export type TAuthor = {
     id: number;

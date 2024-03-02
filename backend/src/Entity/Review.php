@@ -6,6 +6,7 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ReviewRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
@@ -23,6 +24,7 @@ class Review
     private ?string $fullName = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Email]
     #[Groups(['book:one'])]
     private ?string $email = null;
 
