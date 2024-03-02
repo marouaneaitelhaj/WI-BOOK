@@ -3,20 +3,15 @@ import { TBook } from "../types";
 
 export default function BookCard(props: { book: TBook }) {
     return (
-        <div className="m-3 bg-zinc-900 flex relative justify-center items-center rounded-tr-lg">
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                <div className="w-full flex justify-end absolute ">
-                    <span className=" mr-2 mt-2 font-bold w-40 p-4 rounded-full bg-yellow-400 text-black truncate">#{props.book.genre}</span>
-                </div>
-                <div>
-                    <img className="object-cover w-52  h-80 hover:brightness-75" src="https://edit.org/images/cat/book-covers-big-2019101610.jpg" />
-                </div>
-                <div className="px-5 py-3">
-                    <div className=" text-white text-lg mb-2 w-40">
-                        <p className="truncate">{props.book.title}</p>
-                    </div>
-                </div>
+        <Link to={'/' + props.book.id} className="rounded-2xl w-60 h-[450px] cursor-pointer">
+            <span className="bg-green-400 rounded-t-full truncate h-[50px] px-5 py-3 cursor-none hover:rounded-t-3xl">{props.book.genre}</span>
+            <img src="https://edit.org/images/cat/book-covers-big-2019101610.jpg" className="w-full rounded-md object-cover h-[350px]" alt="" />
+            <div className="w-full rounded-md object-cover h-[50px]">
+                <p className="text-white truncate mx-5 font-semibold text-xl my-2">{props.book.title}</p>
+                <p className="text-white truncate font-thin mx-5 my-2 text-xs">
+                    {props.book.author.firstName + '  ' + props.book.author.lastName}
+                </p>
             </div>
-        </div>
+        </Link>
     )
 }

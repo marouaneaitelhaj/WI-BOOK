@@ -47,10 +47,10 @@ final class ReviewFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'comment' => self::faker()->text(),
+            'comment' => self::faker()->realText(50),
             'creationDate' => self::faker()->dateTime(),
             'email' => self::faker()->email(),
-            'fullName' => self::faker()->text(50),
+            'fullName' => self::faker()->name(),
             'book' => BookFactory::random()
         ];
     }

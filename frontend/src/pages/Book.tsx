@@ -19,13 +19,12 @@ export default function Book(props: { bookId: string | undefined }) {
                         <div className="flex flex-col-reverse">
                             <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
                                 <div className="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
-
                                 </div>
                             </div>
 
                             <div className="aspect-w-1 aspect-h-1 w-full">
                                 <div id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel">
-                                    <img src="https://bodleianshop.co.uk/cdn/shop/products/SpeakingVolumes.jpg?v=1646308052" alt="Angled front view with bag zipped and handles upright." className="h-full w-full object-cover object-center sm:rounded-lg" />
+                                    <img src="https://edit.org/images/cat/book-covers-big-2019101610.jpg" alt="Angled front view with bag zipped and handles upright." className=" w-[400px]  h-[600px] object-cover object-center sm:rounded-lg" />
                                 </div>
 
                             </div>
@@ -37,8 +36,19 @@ export default function Book(props: { bookId: string | undefined }) {
 
 
                             <div className="mt-6">
-                                <h3 className="sr-only">Description</h3>
-
+                                <h3 className="">Genre:</h3>
+                                <div className="space-y-6 text-base text-gray-700">
+                                    <p>{book?.genre}</p>
+                                </div>
+                            </div>
+                            <div className="mt-6">
+                                <h3 className="">Author:</h3>
+                                <div className="space-y-6 text-base text-gray-700">
+                                    <p>{book?.author.firstName + " " + book?.author.lastName}</p>
+                                </div>
+                            </div>
+                            <div className="mt-6">
+                                <h3 className="">Description:</h3>
                                 <div className="space-y-6 text-base text-gray-700">
                                     <p>{book?.description}</p>
                                 </div>

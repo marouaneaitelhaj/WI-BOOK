@@ -47,10 +47,10 @@ final class BookFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'description' => self::faker()->text(),
-            'genre' => self::faker()->text(50),
+            'description' => self::faker()->realText(50),
+            'genre' => self::faker()->colorName(),
             'publicationDate' => self::faker()->dateTime(),
-            'title' => self::faker()->text(50),
+            'title' => self::faker()->company(),
             'author' => AuthorFactory::random()
         ];
     }
