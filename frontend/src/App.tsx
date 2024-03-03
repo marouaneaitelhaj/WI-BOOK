@@ -10,7 +10,7 @@ export default function App() {
     <>
       <Provider store={store}>
         <BrowserRouter>
-          <div className='relative bg-black'>
+          <div className='relative min-h-screen bg-black'>
             <Navbar></Navbar>
             <Routes>
               <Route index element={<Books />} />

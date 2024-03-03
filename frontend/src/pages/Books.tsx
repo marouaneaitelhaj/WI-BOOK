@@ -6,6 +6,8 @@ import { useSelector } from "react-redux"
 import { RootState, useAppDispatch } from "@/store/store"
 import { reset, setPage } from "@/store/books/bookSlice"
 import { getBooks } from "@/store/books/bookActions"
+import { CircularProgress } from "@mui/material"
+import { orange } from "@mui/material/colors"
 
 export default function Books() {
     const { books } = useSelector((state: RootState) => state.book)
@@ -28,7 +30,9 @@ export default function Books() {
             dataLength={books.length}
             next={() => dispatch(setPage(page + 1))}
             hasMore={hasMore}
-            loader={<p className="text-white text-center py-5">Loading...</p>}
+            loader={<p className="text-white text-center py-5">
+                <CircularProgress color="secondary" />
+            </p>}
             endMessage={<p className="text-white text-center py-5">
                 Nothing more to see here
             </p>}
@@ -40,8 +44,11 @@ export default function Books() {
                     (e) => {
                         setSearchParams({ title: e.target.value })
                     }
-                } className="w-full border-none bg-white px-5 py-2 my-10 rounded-md" placeholder="Search books" />
-                <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-4 lg:gap-x-8">
+                }
+                    className="w-full border-none focus:outline-none bg-white px-5 py-2 my-10 rounded-md" placeholder="Search books" />
+
+
+                <div className="flex flex-wrap justify-around w-full">
                     {books.map((book) => (
                         <BookCard key={book.id + page} book={book}></BookCard>
                     ))}

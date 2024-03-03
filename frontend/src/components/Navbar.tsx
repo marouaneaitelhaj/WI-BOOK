@@ -11,7 +11,7 @@ export default function Navbar() {
             <div className="w-2/3 flex justify-around">
                 <Link to="/" className="text-white font-bold hover:text-orange-500 cursor-pointer">Home</Link>
                 <Link to="/books" className="text-white font-bold hover:text-orange-500 cursor-pointer">Books</Link>
-                <Link to="/" className="text-white font-bold hover:text-orange-500 cursor-pointer">About</Link>
+                {/* <Link to="/" className="text-white font-bold hover:text-orange-500 cursor-pointer">About</Link> */}
             </div>
         </ul>
     )
