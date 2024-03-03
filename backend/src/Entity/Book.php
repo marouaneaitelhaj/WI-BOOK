@@ -21,7 +21,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Get(
             normalizationContext: ['groups' => ['book:one']]
-        )
+        ),
     ]
 )]
 #[ApiFilter(
