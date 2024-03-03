@@ -38,7 +38,7 @@ export default function Books() {
             </p>}
         >
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                <h2 className="text-white text-5xl">Books</h2>
+                <h2 className="text-[#282925] text-5xl">Books</h2>
 
                 <input type="text" value={searchParams.get('title') || ''} onChange={
                     (e) => {

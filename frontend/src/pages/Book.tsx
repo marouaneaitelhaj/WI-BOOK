@@ -28,6 +28,15 @@ export default function Book(props: { bookId: string | undefined }) {
     const handleClose = () => {
         setOpen(false);
     };
+    const pictures : string[] = [
+        "https://static.wixstatic.com/media/2e2a49_da30973d55744cdd98ffd271be5c367c~mv2.png",
+        "https://static.wixstatic.com/media/2e2a49_140ba1569d4a49ba8cdfac408ede5aa4~mv2.png",
+        "https://static.wixstatic.com/media/2e2a49_31515e7b084f4c0ab6bc38877c46df16~mv2.png",
+    ]
+    function getRandomPict(): string {
+        const randomIndex = Math.floor(Math.random() * pictures.length);
+        return pictures[randomIndex];
+    }
 
     return (
         <div className="flex items-center flex-col m-10">
@@ -35,7 +44,7 @@ export default function Book(props: { bookId: string | undefined }) {
                 <div className="flex">
                     <div className="aspect-w-1 aspect-h-1 w-full">
                         <div id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel">
-                            <img src="https://edit.org/images/cat/book-covers-big-2019101610.jpg" alt="Angled front view with bag zipped and handles upright." className=" w-[400px]  h-[600px] object-cover object-center sm:rounded-lg" />
+                            <img src={getRandomPict()} alt="Angled front view with bag zipped and handles upright." className=" w-[400px]  h-[600px] object-cover object-center sm:rounded-lg" />
                         </div>
                     </div>
                 </div>
@@ -63,7 +72,7 @@ export default function Book(props: { bookId: string | undefined }) {
                         </div>
                     </div>
                     <div className="mt-6">
-                        <button className="text-black border border-yellow-400 bg-yellow-400 px-5 py-3 rounded-md hover:bg-white" onClick={handleClickOpen}>See Reviews</button>
+                        <button className="text-[#2C2C2C] border  border-[#E4DFC2] bg-[#E4DFC2] px-5 py-3 rounded-md hover:bg-white" onClick={handleClickOpen}>See Reviews</button>
                     </div>
                 </div>
             </div>
