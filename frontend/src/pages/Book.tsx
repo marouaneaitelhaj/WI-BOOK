@@ -33,8 +33,9 @@ export default function Book(props: { bookId: string | undefined }) {
         "https://static.wixstatic.com/media/2e2a49_140ba1569d4a49ba8cdfac408ede5aa4~mv2.png",
         "https://static.wixstatic.com/media/2e2a49_31515e7b084f4c0ab6bc38877c46df16~mv2.png",
     ]
-    function getRandomPict(): string {
-        const randomIndex = Math.floor(Math.random() * pictures.length);
+    function getRandomPict(id:number): string {
+        // random index depending on the length and the id of the book
+        const randomIndex = id % pictures.length;
         return pictures[randomIndex];
     }
 
@@ -44,7 +45,7 @@ export default function Book(props: { bookId: string | undefined }) {
                 <div className="flex">
                     <div className="aspect-w-1 aspect-h-1 w-full">
                         <div id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel">
-                            <img src={getRandomPict()} alt="Angled front view with bag zipped and handles upright." className=" w-[400px]  h-[600px] object-cover object-center sm:rounded-lg" />
+                            <img src={getRandomPict(book?.id || 1)} alt="Angled front view with bag zipped and handles upright." className=" w-[400px]  h-[600px] object-cover object-center sm:rounded-lg" />
                         </div>
                     </div>
                 </div>

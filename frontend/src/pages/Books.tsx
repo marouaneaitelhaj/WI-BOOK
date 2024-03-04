@@ -33,7 +33,7 @@ export default function Books() {
             loader={<p className="text-white text-center py-5">
                 <CircularProgress color="secondary" />
             </p>}
-            endMessage={<p className="text-white text-center py-5">
+            endMessage={<p className="text-[#2C2C2C] text-center py-5">
                 Nothing more to see here
             </p>}
         >
@@ -48,7 +48,7 @@ export default function Books() {
                     className="w-full border-none focus:outline-none bg-white px-5 py-2 my-10 rounded-md" placeholder="Search books" />
 
 
-                <div className="flex flex-wrap justify-around w-full">
+                <div className="grid grid-cols-4 w-full">
                     {books.map((book) => (
                         <BookCard key={book.id + page} book={book}></BookCard>
                     ))}

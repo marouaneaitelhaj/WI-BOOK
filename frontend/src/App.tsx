@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
 export default function App() {
   return (
@@ -13,8 +14,10 @@ export default function App() {
           <div className='relative min-h-screen'>
             <Navbar></Navbar>
             <Routes>
-              <Route index element={<Books />} />
-              <Route path="/:bookId" element={<BookWraper />} />
+              <Route index element={<Home />} />
+              {/* <Route index element={<Books />} /> */}
+              <Route path="/books" element={<Books />} />
+              <Route path="/books/:bookId" element={<BookWraper />} />
             </Routes>
           </div>
         </BrowserRouter >

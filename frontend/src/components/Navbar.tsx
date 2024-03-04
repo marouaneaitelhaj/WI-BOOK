@@ -7,12 +7,12 @@ export default function Navbar() {
         <ul className="flex justify-around py-5 bg-[#2C2C2C]">
             <div className="w-1/3  flex justify-center">
                 <Link to="/" className="w-full flex justify-center">
-                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-2 flex justify-center items-center rounded-md  w-7 h-7">W</span>
-                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-2 flex justify-center items-center rounded-md  w-7 h-7">I</span>
-                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-2 flex justify-center items-center rounded-md  w-7 h-7">B</span>
-                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-2 flex justify-center items-center rounded-md  w-7 h-7">O</span>
-                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-2 flex justify-center items-center rounded-md  w-7 h-7">O</span>
-                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-2 flex justify-center items-center rounded-md  w-7 h-7">K</span>
+                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-[0.5px] flex justify-center items-center rounded-md  w-7 h-7">W</span>
+                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-[1.0px] flex justify-center items-center rounded-md  w-7 h-7">I</span>
+                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-[1.5px] flex justify-center items-center rounded-md  w-7 h-7">B</span>
+                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-[2.0px] flex justify-center items-center rounded-md  w-7 h-7">O</span>
+                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-[2.5px] flex justify-center items-center rounded-md  w-7 h-7">O</span>
+                    <span className="hover:bg-[#E4DFC2] bg-[#ABA89F] mx-[3.0px] flex justify-center items-center rounded-md  w-7 h-7">K</span>
                 </Link>
             </div>
             <div className="w-2/3 flex justify-around">
