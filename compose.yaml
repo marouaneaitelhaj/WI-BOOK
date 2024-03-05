@@ -1,0 +1,21 @@
+services:
+  db:
+    container_name: db
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: wibook
+    ports:
+      - 5432:5432
+  playground-web-frontend:
+    image: frontend:latest
+    environment:
+      PORT: 3000
+      PROXY_API: http://playground-web-backend:8000/
+    ports:
+      - 3000:3000
+  playground-web-backend:
+    image: backend:latest 
+    ports:
+      - 8000:8000
