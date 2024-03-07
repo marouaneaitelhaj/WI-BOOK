@@ -5,12 +5,17 @@ namespace App\Entity;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\BookRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use PhpParser\Node\Expr\Cast\Array_;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
@@ -22,11 +27,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Get(
             normalizationContext: ['groups' => ['book:one']]
         ),
+        new Post(),
+        new Put(),
+        new Patch(),
+        new Delete()
     ]
 )]
 #[ApiFilter(
     SearchFilter::class,
-    properties: ['title' => 'ipartial', 'author.id' => 'exact', 'genre' => 'ipartial']
+    properties: [
+        'title' => 'ipartial',
+        // 'author.id' => 'exact', 'genre' => 'ipartial'
+    ]
 )]
 class Book
 {
@@ -58,8 +70,8 @@ class Book
 
     #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'book')]
     #[Groups(['book:one'])]
-    public Collection $reviews;
-    
+    public iterable $reviews;
+
 
     public function getAuthor(): ?Author
     {

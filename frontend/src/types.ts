@@ -18,7 +18,7 @@ export type TAuthor = {
 export type TReview = {
     id: number;
     fullName : string;
-    email : number;
+    email : string;
     comment : string;
     creationDate : string;
     book : TBook;
