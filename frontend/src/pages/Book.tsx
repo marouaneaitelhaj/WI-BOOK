@@ -34,7 +34,6 @@ export default function Book(props: { bookId: string | undefined }) {
         "https://static.wixstatic.com/media/2e2a49_31515e7b084f4c0ab6bc38877c46df16~mv2.png",
     ]
     function getRandomPict(id:number): string {
-        // random index depending on the length and the id of the book
         const randomIndex = id % pictures.length;
         return pictures[randomIndex];
     }
